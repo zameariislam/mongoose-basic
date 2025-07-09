@@ -8,9 +8,7 @@ import mongoose from "mongoose";
         },
         age:{
             type:Number,
-            // min:[ 12, 'Age should be minimum 12'],
-            // max:[ 40, 'Age should be maximum 40'],
-            //  required:[true,'Age is required']
+           
 
             required:true,
             validate:{
@@ -46,6 +44,21 @@ import mongoose from "mongoose";
     ref: 'User',
     required:[ function(){   return  this.age<18  },'parentId is required' ]
   }
+    },{
+        methods:{
+            getSummary(){
+                
+                return  `${this.name} is ${this.age} years old`
+
+            }
+        },
+        statics:{
+           async findByName(filter){
+
+                return  await  User.findOne(filter)
+            }
+        }
+    
     }) 
 
 

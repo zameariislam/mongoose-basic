@@ -9,15 +9,16 @@ userRouter.get('/',async (req,res)=>{
 
    try{
 
-     const user= await  User.findOne({name:'Zameari'})
-
+     const user= await  User.findByName({name:'Naznin'})
+      console.log( user.getSummary()
+)
 
    
 
     res.send(user)
 
     }catch(error){
-        console.log(error.error.message)
+      
 
         res.status(401).json({
             status:false,
