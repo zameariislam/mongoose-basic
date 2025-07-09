@@ -53,9 +53,9 @@ import mongoose from "mongoose";
             }
         },
         statics:{
-           async findByName(filter){
+           async findByName(name){
 
-                return  await  User.findOne(filter)
+                return this.findOne({name})
             }
         }
     

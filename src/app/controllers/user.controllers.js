@@ -9,7 +9,10 @@ userRouter.get('/',async (req,res)=>{
 
    try{
 
-     const user= await  User.findByName({name:'Naznin'})
+     const user=  await User.findByName('Naznin')
+
+     const user1= new User()
+     user1.getSummary()
       console.log( user.getSummary()
 )
 
