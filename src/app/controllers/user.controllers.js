@@ -41,8 +41,9 @@ userRouter.post('/create-user', async (req,res)=>{
 
     try{
 
-     const user= await User.create(body)
-     console.log(user.toObject())
+     const newUser= new User(body)
+     newUser.save()
+    
 
     res.send('created')
 

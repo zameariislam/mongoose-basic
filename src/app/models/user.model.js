@@ -25,7 +25,8 @@ import mongoose from "mongoose";
         password:{
             type:String,
             required:[true,'Enter password'],
-            select:false
+            select:false,
+            default:'1234'
 
         },
         role:{
@@ -60,6 +61,32 @@ import mongoose from "mongoose";
         }
     
     }) 
+
+   userSchema.pre('save',  function () {
+    console.log('hello');
+    console.log( ' before',this)
+    this.age=29
+   
+   
+    this.password=this.name+this.age
+     console.log('after',this)
+
+    // You can await something here
+});
+
+   userSchema.post('save',  function (doc) {
+
+    console.log('after saving');
+    console.log(` your password is ${doc.password}`)
+    
+
+    // You can await something here
+});
+
+
+    
+    
+
 
 
     export   const User= mongoose.model('User',userSchema)
